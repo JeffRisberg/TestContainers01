@@ -4,7 +4,7 @@
 
 allprojects {
     apply plugin: 'java'
-    group = 'com.aisera'
+    group = 'com.company'
     version = '0.1.0'
 }
 
@@ -15,9 +15,6 @@ buildscript {
         }
         jcenter()
     }
-    dependencies {
-        classpath "com.avast.gradle:docker-compose-gradle-plugin:0.4.5"
-    }
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -26,93 +23,8 @@ repositories {
     jcenter()
 }
 
-
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'docker-compose'
-
-task buildPlatformDockerImage(type: Exec) {
-    workingDir "${buildDir}/install/opt/aisera/"
-    executable "docker"
-    args "build", "-t", "aisera/platform", "-f", "Dockerfile.platform", "."
-}
-
-task buildConnectorServerDockerImage(type: Exec) {
-    executable "docker"
-    args "build", "-t", "aisera/connector-server", "-f", "Dockerfile.connectors", "."
-}
-
-task cleanPlatformDockerImage(type: Exec) {
-    ignoreExitValue true
-    executable "docker"
-    args "rmi", "aisera/platform", "--force"
-}
-
-composeUp.dependsOn {
-    cleanPlatformDockerImage
-
-    buildPlatformDockerImage
-}
-
-test.doFirst {
-    def folder = new File("/tmp/aisera/data/graph/")
-    if ( !folder.exists() ) {
-        folder.mkdirs()
-    }
-
-    new File( folder, 'cayley.cfg' ).write { w ->
-        w << "{\n\"database\": \"bolt\",\n" +
-                " \"db_path\": \"/data/boltdb\",\n" +
-                " \"listen_host\": \"0.0.0.0\"\n" +
-                "} "
-    }
-
-    def indexFolder = new File("/tmp/aisera/data/index/")
-    if ( !indexFolder.exists() ) {
-        indexFolder.mkdirs()
-    }
-
-    composeUp
-}
-
-clean.doLast {
-    exec {
-        ignoreExitValue true
-        executable "docker"
-        args "rmi", "-f", "aisera/platform", "--force"
-    }
-}
-
-task buildPackage(type: Exec) {
-    workingDir "${buildDir}/install"
-    executable "tar"
-    args 'zcvf', 'aisera-platform-0.1.0.tgz', 'opt'
-    print "Building tar"
-}
-
-assemble.doFirst {
-    def binDir = new File("${buildDir}/install/opt/aisera/bin")
-    if (!binDir.exists()) {
-        binDir.mkdirs()
-    }
-
-    def libDir = new File("${buildDir}/install/opt/aisera/lib/plugins")
-    if (!libDir.exists()) {
-        libDir.mkdirs()
-    }
-
-    def confDir = new File("${buildDir}/install/opt/aisera/conf")
-    if (!confDir.exists()) {
-        confDir.mkdirs()
-    }
-
-    copy {
-        from "Dockerfile.platform"
-        into "${buildDir}/install/opt/aisera/"
-    }
-}
-
-//install.dependsOn(assemble)
 
 subprojects {
     repositories {
@@ -120,19 +32,6 @@ subprojects {
     }
     dependencies {
         compile "org.slf4j:slf4j-api:1.7.24"
-        compile "org.projectlombok:lombok:1.16.18"
-        compile "com.googlecode.protobuf-java-format:protobuf-java-format:1.4"
-        // https://mvnrepository.com/artifact/commons-cli/commons-cli
-        compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
-
-        // swagger
-        compile ('io.swagger:swagger-codegen-cli:2.2.3') {
-            exclude group: 'commons-cli'
-        }
-        compile group: 'io.swagger', name: 'swagger-annotations', version: '1.5.9'
-        compile group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
-        compile group: 'com.squareup.okhttp', name: 'logging-interceptor', version: '2.7.5'
-        compile group: 'com.google.code.gson', name: 'gson', version: '2.6.2'
         compile group: 'joda-time', name: 'joda-time', version: '2.9.3'
 
         testCompile 'junit:junit:4.12'
