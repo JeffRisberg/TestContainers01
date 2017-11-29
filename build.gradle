@@ -1,39 +1,17 @@
 /**
  *
  */
-
-allprojects {
-    apply plugin: 'java'
-    group = 'com.company'
-    version = '0.1.0'
-}
-
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        jcenter()
-    }
-}
-
-// In this section you declare where to find the dependencies of your project
 repositories {
     mavenCentral()
-    jcenter()
 }
 
-// Apply the java plugin to add support for Java
 apply plugin: 'java'
 
-subprojects {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        compile "org.slf4j:slf4j-api:1.7.24"
-        compile group: 'joda-time', name: 'joda-time', version: '2.9.3'
+version = '0.1.0'
 
-        testCompile 'junit:junit:4.12'
-    }
+dependencies {
+    compile "org.slf4j:slf4j-api:1.7.24"
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.3'
+
+    testCompile 'junit:junit:4.12'
 }
