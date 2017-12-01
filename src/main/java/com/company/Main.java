@@ -1,33 +1,34 @@
 package com.company;
 
+import com.company.models.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    protected List<String> names;
+    protected List<User> users;
 
     public Main() {
-        this.names = new ArrayList<>();
+        this.users = new ArrayList<>();
     }
 
-    public void addName(String name) {
-        names.add(name);
+    public void addUser(User user) {
+        users.add(user);
     }
 
-    public List<String> getNames() {
-        return names;
+    public List<User> getUsers() {
+        return users;
     }
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.addName("Jack");
-        main.addName("Jill");
-        main.addName("Jeff");
-        main.addName("Emily");
 
-        for (String name : main.getNames()) {
-            System.out.println(name);
+        User user1 = new User(1l, "Jack", "Jones");
+        main.addUser(user1);
+
+        for (User user : main.getUsers()) {
+            System.out.println(user);
         }
     }
 }

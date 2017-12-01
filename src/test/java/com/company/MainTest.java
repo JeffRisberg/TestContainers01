@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.models.User;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -17,14 +18,28 @@ public class MainTest extends TestCase {
     }
 
     @Test
+    public void testUser() {
+        String firstName = "Tom";
+        String lastName = "Smith";
+
+        User user = new User(2L, firstName, lastName);
+
+        assertEquals(firstName, user.getFirstName());
+    }
+
+    @Test
     public void testMain() {
         Main main = new Main();
 
-        main.addName("Jack");
-        main.addName("Jill");
+        User user1 = new User(2L, "Tom", "Smith");
+        User user2 = new User(3L, "Jack", "Underhill");
 
-        List<String> names = main.getNames();
+        main.addUser(user1);
+        main.addUser(user2);
 
-        assertTrue(names.size() == 2);
+        List<User> users = main.getUsers();
+
+        assertTrue(users.size() == 2);
     }
+
 }
