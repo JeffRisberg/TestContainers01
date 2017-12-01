@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class User {
     protected Long id;
     protected String firstName;
