@@ -27,7 +27,7 @@ public class MainTest extends TestCase {
         assertEquals(firstName, user.getFirstName());
     }
 
-    @Test
+       @Test
     public void testMain() {
         Main main = new Main();
 
@@ -40,6 +40,22 @@ public class MainTest extends TestCase {
         List<User> users = main.getUsers();
 
         assertTrue(users.size() == 2);
+    }
+
+    @Test
+    public void testFull() {
+        Main main = new Main();
+
+        User user1 = new User(2L, "Tom", "Smith");
+        User user2 = new User(3L, "Jack", "Underhill");
+
+        main.addUser(user1);
+        main.addUser(user2);
+        main.removeUser(user1);
+
+        List<User> users = main.getUsers();
+
+        assertTrue(users.size() == 1);
     }
 
 }
