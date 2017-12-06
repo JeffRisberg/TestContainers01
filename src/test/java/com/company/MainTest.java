@@ -1,13 +1,15 @@
 package com.company;
 
 import com.company.models.User;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTest extends TestCase {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class MainTest {
 
     @Test
     public void testList() {
