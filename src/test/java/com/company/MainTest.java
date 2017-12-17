@@ -13,7 +13,7 @@ public class MainTest {
 
     @Test
     public void testList() {
-        List<String> names = new ArrayList<String>();
+        List<String> names = new ArrayList<>();
 
         names.add("Jack");
         assertTrue(names.size() == 1);
@@ -22,7 +22,7 @@ public class MainTest {
     @Test
     public void testUser() {
         String firstName = "Tom";
-        String lastName = "Smith";
+        String lastName = "Swift";
 
         User user = new User(2L, firstName, lastName);
 
@@ -33,7 +33,7 @@ public class MainTest {
     public void testMain() {
         Main main = new Main();
 
-        User user1 = new User(2L, "Tom", "Smith");
+        User user1 = new User(2L, "Tom", "Swift");
         User user2 = new User(3L, "Jack", "Underhill");
 
         main.addUser(user1);
@@ -48,7 +48,7 @@ public class MainTest {
     public void testFull() {
         Main main = new Main();
 
-        User user1 = new User(2L, "Tom", "Smith");
+        User user1 = new User(2L, "Tom", "Swift");
         User user2 = new User(3L, "Jack", "Underhill");
 
         main.addUser(user1);
