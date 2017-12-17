@@ -29,7 +29,7 @@ public class MainTest {
         assertEquals(firstName, user.getFirstName());
     }
 
-       @Test
+    @Test
     public void testMain() {
         Main main = new Main();
 
