@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     protected List<User> users;
 
@@ -29,12 +29,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        LOGGER.debug("Welcome to Example 1");
+        logger.debug("Welcome to Example 1");
 
         Main main = new Main();
 
         User user1 = new User(1l, "Jack", "Jones");
         main.addUser(user1);
+
+        User user2 = new User(1l, "John", "Smith");
+        main.addUser(user2);
 
         for (User user : main.getUsers()) {
             System.out.println(user);
