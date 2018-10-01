@@ -35,13 +35,17 @@ public class MainTest {
 
         User user1 = new User(2L, "Tom", "Swift");
         User user2 = new User(3L, "Jack", "Underhill");
+        User user3 = new User(4L, "Susan", "James");
+        User user4 = new User(5L, "Helen", "Smith");
 
         main.addUser(user1);
         main.addUser(user2);
+        main.addUser(user3);
+        main.addUser(user4);
 
         List<User> users = main.getUsers();
 
-        assertTrue(users.size() == 2);
+        assertTrue(users.size() == 4);
     }
 
     @Test
