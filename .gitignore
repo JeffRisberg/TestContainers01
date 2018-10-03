@@ -38,8 +38,6 @@ gradlew.bat
 .idea/*.iml
 .idea/modules
 
-*.iml
-
 ### Gradle ###
 .gradle
 
