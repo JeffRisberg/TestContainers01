@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class User {
-    protected Long id;
-    protected String firstName;
-    protected String lastName;
+  protected Long id;
+  protected String firstName;
+  protected String lastName;
 }
