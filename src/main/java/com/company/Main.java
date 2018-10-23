@@ -39,6 +39,9 @@ public class Main {
         User user2 = new User(1l, "John", "Smith");
         main.addUser(user2);
 
+        User user3 = new User(1l, "Helen", "Underhill");
+        main.addUser(user3);
+
         for (User user : main.getUsers()) {
             System.out.println(user);
         }
