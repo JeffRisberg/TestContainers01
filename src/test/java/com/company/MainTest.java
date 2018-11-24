@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.models.Item;
+import com.company.stores.ItemStore;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,17 +13,23 @@ import static org.junit.Assert.assertTrue;
 
 public class MainTest {
 
+  static ItemStore itemStore;
+
+  @BeforeClass
+  public static void setup() {
+    itemStore = new ItemStore();
+  }
+
   @Test
   public void testList() {
-    List<String> names = new ArrayList<>();
+    List<Item> names = itemStore.readAllItems();
 
-    names.add("Jack");
-    assertTrue(names.size() == 1);
+    assertTrue(names.size() == 4);
   }
 
   @Test
   public void testUser() {
-    String name = "Tom";
+    String name = "Furby";
     String description = "Swift";
 
     Item user = new Item(2L, name, description, 44);
