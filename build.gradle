@@ -12,11 +12,11 @@ ext {
 }
 
 dependencies {
+  compile "org.apache.commons:commons-lang3:3.8.1"
   compile "org.slf4j:slf4j-api:$slf4jVersion"
   runtime "org.slf4j:slf4j-simple:$slf4jVersion"
   compile "org.projectlombok:lombok:$projectLombokVersion"
-  compile group: 'joda-time', name: 'joda-time', version: '2.9.3'
-  compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
 
   testCompile 'junit:junit:4.12'
+  testCompile group: 'org.mockito', name: 'mockito-core', version: '2.23.4'
 }
