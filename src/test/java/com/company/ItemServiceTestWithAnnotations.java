@@ -30,34 +30,6 @@ public class ItemServiceTestWithAnnotations {
 
   @Before
   public void setUp() throws Exception {
-    //MockitoAnnotations.initMocks(this);
-  }
-
-  @Test
-  public void getItemNameUpperCase() {
-    //
-    // Given
-    //
-    Item mockedItem = new Item(1L, "Item 1", "This is item 1", 2000);
-    when(itemStore.findById(1L)).thenReturn(mockedItem);
-
-    //
-    // When
-    //
-    String result = itemService.getItemNameUpperCase(1L);
-
-    //
-    // Then
-    //
-    verify(itemStore, times(1)).findById(1L);
-    assertThat(result, is("ITEM 1"));
-  }
-
-  @Test
-  public void getAveragePrice() {
-    //
-    // Given
-    //
     Item mockedItem1 = new Item(1L, "Item 1", "This is item 1", 2000);
     Item mockedItem2 = new Item(2L, "Item 2", "This is item 2", 4000);
     List<Item> mockedItems = new ArrayList<>();
@@ -66,11 +38,34 @@ public class ItemServiceTestWithAnnotations {
 
     when(itemStore.readAllItems()).thenReturn(mockedItems);
 
+    when(itemStore.findById(1L)).thenReturn(mockedItem1);
+    when(itemStore.findById(2L)).thenReturn(mockedItem2);
+  }
+
+  @Test
+  public void getItemNameUpperCase() {
+    //
+    // When
+    //
+    String result = itemService.getItemNameUpperCase(1L);
+
+    //
+    // Verify
+    //
+    verify(itemStore, times(1)).findById(1L);
+    assertThat(result, is("ITEM 1"));
+  }
+
+  @Test
+  public void getAveragePrice() {
     //
     // When
     //
     int result = itemService.getAveragePrice();
 
+    //
+    // Verify
+    //
     verify(itemStore, times(1)).readAllItems();
     assertEquals(3000, result);
   }
