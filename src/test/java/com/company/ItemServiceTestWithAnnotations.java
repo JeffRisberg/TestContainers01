@@ -39,7 +39,6 @@ public class ItemServiceTestWithAnnotations {
     when(itemStore.readAllItems()).thenReturn(mockedItems);
 
     when(itemStore.findById(1L)).thenReturn(mockedItem1);
-    when(itemStore.findById(2L)).thenReturn(mockedItem2);
   }
 
   @Test
