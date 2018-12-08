@@ -12,7 +12,6 @@ version = '0.1.0'
 ext {
     slf4jVersion = '1.7.25'
     projectLombokVersion = '1.16.20'
-    slf4jVersion = '1.7.25'
 }
 
 dependencies {
