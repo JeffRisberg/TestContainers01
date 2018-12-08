@@ -9,8 +9,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User {
-    protected Long id;
-    protected String firstName;
-    protected String lastName;
+public class Item {
+  protected Long id;
+  protected String name;
+  protected String description;
+  protected int price;
 }

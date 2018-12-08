@@ -1,6 +1,8 @@
 package com.company;
 
-import com.company.models.User;
+import com.company.models.Item;
+import com.company.stores.ItemStore;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,57 +13,27 @@ import static org.junit.Assert.assertTrue;
 
 public class MainTest {
 
-    @Test
-    public void testList() {
-        List<String> names = new ArrayList<>();
+  static ItemStore itemStore;
 
-        names.add("Jack");
-        assertTrue(names.size() == 1);
-    }
+  @BeforeClass
+  public static void setup() {
+    itemStore = new ItemStore();
+  }
 
-    @Test
-    public void testUser() {
-        String firstName = "Tom";
-        String lastName = "Swift";
+  @Test
+  public void testList() {
+    List<Item> names = itemStore.readAllItems();
 
-        User user = new User(2L, firstName, lastName);
+    assertTrue(names.size() == 4);
+  }
 
-        assertEquals(firstName, user.getFirstName());
-    }
+  @Test
+  public void testUser() {
+    String name = "Furby";
+    String description = "Swift";
 
-    @Test
-    public void testMain() {
-        Main main = new Main();
+    Item user = new Item(2L, name, description, 44);
 
-        User user1 = new User(2L, "Tom", "Swift");
-        User user2 = new User(3L, "Jack", "Underhill");
-        User user3 = new User(4L, "Susan", "James");
-        User user4 = new User(5L, "Helen", "Smith");
-
-        main.addUser(user1);
-        main.addUser(user2);
-        main.addUser(user3);
-        main.addUser(user4);
-
-        List<User> users = main.getUsers();
-
-        assertTrue(users.size() == 4);
-    }
-
-    @Test
-    public void testFull() {
-        Main main = new Main();
-
-        User user1 = new User(2L, "Tom", "Swift");
-        User user2 = new User(3L, "Jack", "Underhill");
-
-        main.addUser(user1);
-        main.addUser(user2);
-        main.removeUser(user1);
-
-        List<User> users = main.getUsers();
-
-        assertTrue(users.size() == 1);
-    }
-
+    assertEquals(name, user.getName());
+  }
 }
