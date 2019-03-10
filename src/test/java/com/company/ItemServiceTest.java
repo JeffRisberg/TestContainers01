@@ -27,8 +27,11 @@ public class ItemServiceTest {
   public void setUp() throws Exception {
     itemStore = mock(ItemStore.class);
 
-    Item mockedItem = new Item(1L, "Item 1", "Item 1 Desc", 2000);
-    when(itemStore.findById(1L)).thenReturn(mockedItem);
+    Item mockedItemA = new Item(1L, "Item 1", "Item 1 Desc", 2000);
+    when(itemStore.findById(1L)).thenReturn(mockedItemA);
+
+    Item mockedItemB = new Item(1L, "Item 2", "Item 2 Desc", 4000);
+    when(itemStore.findById(2L)).thenReturn(mockedItemB);
 
     Item mockedItem1 = new Item(1L, "Item 1", "Item 1 Desc", 2000);
     Item mockedItem2 = new Item(2L, "Item 2", "Item 2 Desc", 4000);
