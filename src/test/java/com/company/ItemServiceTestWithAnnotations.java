@@ -30,8 +30,8 @@ public class ItemServiceTestWithAnnotations {
 
   @Before
   public void setUp() throws Exception {
-    Item mockedItem1 = new Item(1L, "Item 1", "This is item 1", 2000);
-    Item mockedItem2 = new Item(2L, "Item 2", "This is item 2", 4000);
+    Item mockedItem1 = new Item(1L, "Item 1", "Item 1 Desc", 2000);
+    Item mockedItem2 = new Item(2L, "Item 2", "Item 2 Desc", 4000);
     List<Item> mockedItems = new ArrayList<>();
     mockedItems.add(mockedItem1);
     mockedItems.add(mockedItem2);
