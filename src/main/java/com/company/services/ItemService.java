@@ -14,6 +14,10 @@ public class ItemService {
     this.itemStore = itemStore;
   }
 
+  public Item getById(long id) {
+    return itemStore.findById(id);
+  }
+
   public int getAveragePrice() {
     List<Item> items = itemStore.readAllItems();
 
