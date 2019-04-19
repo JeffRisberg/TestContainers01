@@ -60,7 +60,6 @@ public class ItemServiceTest {
 
   @Test
   public void getItemNameUpperCase() {
-
     //
     // Test
     //
