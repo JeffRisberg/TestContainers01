@@ -1,7 +1,6 @@
 package com.company.stores;
 
 import com.company.models.Item;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +28,7 @@ public class ItemStore {
 
   public Item findById(long id) {
     for (Item item : items) {
-      if (item.getId() == id)
-        return item;
+      if (item.getId() == id) return item;
     }
     return null;
   }

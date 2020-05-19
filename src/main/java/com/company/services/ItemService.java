@@ -2,9 +2,8 @@ package com.company.services;
 
 import com.company.models.Item;
 import com.company.stores.ItemStore;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 
 public class ItemService {
 
