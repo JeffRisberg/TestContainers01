@@ -10,9 +10,11 @@ import com.company.services.ItemService;
 import com.company.stores.ItemStore;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 
+@Slf4j
 public class ItemServiceTest {
 
   private ItemStore itemStore;
@@ -38,6 +40,7 @@ public class ItemServiceTest {
     when(itemStore.readAllItems()).thenReturn(mockedItems);
 
     itemService = new ItemService(itemStore);
+    log.info("Set up Store and Service");
   }
 
   @Test
