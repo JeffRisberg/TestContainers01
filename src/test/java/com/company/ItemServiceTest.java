@@ -18,7 +18,6 @@ import org.junit.Test;
 public class ItemServiceTest {
 
   private ItemStore itemStore;
-
   private ItemService itemService;
 
   @Before
