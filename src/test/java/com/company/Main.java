@@ -2,19 +2,18 @@ package com.company;
 
 // import lombok.extern.slf4j.Slf4j;
 
-//import static org.testcontainers.MySQLTestImages.MYSQL_IMAGE;
-
 import java.sql.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.testcontainers.containers.MySQLContainer;
+import org.testcontainers.utility.DockerImageName;
 
 // @Slf4j
 public class Main {
 
   @Test
   public void sampleTestMethod() throws SQLException {
-    MySQLContainer<?> mysql = new MySQLContainer<>();
+    MySQLContainer<?> mysql = new MySQLContainer<>(DockerImageName.parse("mysql"));
 
     mysql.start();
 
