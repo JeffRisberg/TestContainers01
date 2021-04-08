@@ -38,11 +38,13 @@ public class Main {
       stmt.executeUpdate(insertSQL);
 
       // fetching and asserting the record
-      ResultSet result = stmt.executeQuery("select id from registration");
+      ResultSet result = stmt.executeQuery("select id, first from registration");
       result.next();
 
       int resultId = result.getInt(1);
-      log.info("Result id=" + resultId);
+      String resultFirst = result.getString(2);
+
+      log.info("Result id=" + resultId + ", first=" + resultFirst);
 
       Assert.assertEquals(100, resultId);
     } catch (Exception e) {
