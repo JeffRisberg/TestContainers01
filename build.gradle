@@ -15,8 +15,8 @@ dependencies {
     compile "org.slf4j:slf4j-api:$slf4jVersion"
     runtime "org.slf4j:slf4j-simple:$slf4jVersion"
 
-    testCompile "junit:junit:$junitVersion"
-    testCompile "org.testcontainers:testcontainers:1.15.2"
-    testCompile "org.testcontainers:mysql:1.15.2"
-    testCompile 'mysql:mysql-connector-java:8.0.22'
+    compile "junit:junit:$junitVersion"
+    compile "org.testcontainers:testcontainers:1.15.2"
+    compile "org.testcontainers:mysql:1.15.2"
+    compile 'mysql:mysql-connector-java:8.0.22'
 }
