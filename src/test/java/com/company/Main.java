@@ -1,6 +1,6 @@
 package com.company;
 
-// import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
 import org.junit.Assert;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-// @Slf4j
+@Slf4j
 public class Main {
 
   @Test
@@ -29,21 +29,26 @@ public class Main {
               + " age INTEGER, "
               + " PRIMARY KEY (id))";
 
+      log.info(sql);
       stmt.executeUpdate(sql);
 
       // insert records in table 'registration'
       String insertSQL = "INSERT INTO registration " + "values (100, 'Luke', 'Skywalker', 18)";
+      log.info(insertSQL);
       stmt.executeUpdate(insertSQL);
 
       // fetching and asserting the record
       ResultSet result = stmt.executeQuery("select id from registration");
       result.next();
-      Assert.assertEquals(100, result.getInt(1));
+
+      int resultId = result.getInt(1);
+      log.info("Result id=" + resultId);
+
+      Assert.assertEquals(100, resultId);
     } catch (Exception e) {
       e.printStackTrace();
     }
 
     mysql.stop();
-
   }
 }
