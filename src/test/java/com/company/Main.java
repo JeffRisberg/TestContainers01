@@ -33,9 +33,13 @@ public class Main {
       stmt.executeUpdate(sql);
 
       // insert records in table 'registration'
-      String insertSQL = "INSERT INTO registration " + "values (100, 'Luke', 'Skywalker', 18)";
-      log.info(insertSQL);
-      stmt.executeUpdate(insertSQL);
+      String insertSQL1 = "INSERT INTO registration VALUES (100, 'Luke', 'Skywalker', 20)";
+      log.info(insertSQL1);
+      stmt.executeUpdate(insertSQL1);
+
+      String insertSQL2 = "INSERT INTO registration VALUES (101, 'Frodo', 'Baggins', 110)";
+      log.info(insertSQL2);
+      stmt.executeUpdate(insertSQL2);
 
       // fetching and asserting the record
       ResultSet result = stmt.executeQuery("select id, first from registration");
