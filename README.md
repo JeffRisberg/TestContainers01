@@ -1,3 +1,3 @@
-# TestContainer01
+# Testcontainers01
 
-Example of using TestContainers library.
+Example of using Testcontainers library.
