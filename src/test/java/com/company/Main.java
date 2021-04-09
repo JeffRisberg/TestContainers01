@@ -53,6 +53,7 @@ public class Main {
       Assert.assertEquals(100, resultId);
     } catch (Exception e) {
       e.printStackTrace();
+      Assert.fail();
     }
 
     mysql.stop();
