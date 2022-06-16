@@ -3,8 +3,7 @@ package com.company;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 import org.junit.contrib.java.lang.system.EnvironmentVariables;
@@ -12,10 +11,11 @@ import org.junit.contrib.java.lang.system.EnvironmentVariables;
 @Slf4j
 public class Main {
 
+  @Rule
+  public final EnvironmentVariables ENVIRONMENT_VARIABLES = new EnvironmentVariables();
+
   @Test
   public void sampleTestMethod() throws SQLException {
-    EnvironmentVariables ENVIRONMENT_VARIABLES = new EnvironmentVariables();
-
     ENVIRONMENT_VARIABLES.set("TESTCONTAINERS_RYUK_DISABLED", "true");
 
     MySQLContainer<?> mysql = new MySQLContainer<>(DockerImageName.parse("mysql"));
