@@ -7,12 +7,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
+import org.junit.contrib.java.lang.system.EnvironmentVariables;
 
 @Slf4j
 public class Main {
 
   @Test
   public void sampleTestMethod() throws SQLException {
+    EnvironmentVariables ENVIRONMENT_VARIABLES = new EnvironmentVariables();
+
+    ENVIRONMENT_VARIABLES.set("TESTCONTAINERS_RYUK_DISABLED", "true");
+
     MySQLContainer<?> mysql = new MySQLContainer<>(DockerImageName.parse("mysql"));
 
     mysql.start();
